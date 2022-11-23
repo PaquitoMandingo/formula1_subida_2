@@ -41,7 +41,7 @@ public class HelloController {
 //***************************************************************************************************************//
     public boolean cargar(ActionEvent actionEvent) {
         try {
-            //creamos la conexion y le ponemos los datos con la ruta de lo que tiene que abrir
+            //creamos la conexion y le ponemos los datos con la ruta para que lo ejecute
             final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
             final String usuario = "adminer";
             final String passwd = "adminer";
@@ -53,8 +53,8 @@ public class HelloController {
                     , "adminer",
                     "adminer");
             ;
-            //hacemos la consulta
-            String SQL = "SELECT * " + "FROM offices";
+            //hacemos la consulta con los datos que queremos sacar
+            String SQL = "SELECT * " + "FROM escuderia";
             ResultSet datos = c.createStatement().executeQuery(SQL);
             System.out.println(datos.toString());
 
@@ -62,26 +62,23 @@ public class HelloController {
             //de esta forma los mostramos en la tabla
             while (datos.next()) {
                 auxiliar = new Escuderias(
-                        datos.getString("officeCode"),
-                        datos.getString("city"),
-                        datos.getString("phone"),
-                        datos.getString("addressLine1"),
-                        datos.getString("addressLine2"));
+                        datos.getString("CodigoEscuderia"),
+                        datos.getString("Nombre"),
+                        datos.getString("Patrocinador"),
+                        datos.getString("puntosE"),
+                        datos.getString("Web"));
 
                 data.add(auxiliar);
                 System.out.println(auxiliar.toString());
 
             }
-            //tcProductCode.setCellValueFactory(new PropertyValueFactory<Producto, String>("productCode"));
-
-
             //esto es para poner los datos en la tabla para ello simplemnete le ponemos que en el id de cada columna de la tabla le aplique
             //su dato es decir para oficina pues el codigo que tenemos en el array  y asi con cada dato
-            tcOfficeCode.setCellValueFactory(new PropertyValueFactory<Oficina, String>("officeCode"));
-            tcCity.setCellValueFactory(new PropertyValueFactory<Oficina, String>("city"));
-            tcPhone.setCellValueFactory(new PropertyValueFactory<Oficina, String>("phone"));
-            tcAddres_1.setCellValueFactory(new PropertyValueFactory<Oficina, String>("addressLine1"));
-            tcAddres_2.setCellValueFactory(new PropertyValueFactory<Oficina, String>("addressLine2"));
+            tcCodigoEscuderia.setCellValueFactory(new PropertyValueFactory<Escuderias, String>("CodigoEscuderia"));
+            tcEscuderia.setCellValueFactory(new PropertyValueFactory<Escuderias, String>("Nombre"));
+            tcPatrocinador.setCellValueFactory(new PropertyValueFactory<Escuderias, String>("Patrocinador"));
+            tcPuntosMundialEscuderias.setCellValueFactory(new PropertyValueFactory<Escuderias, String>("puntosE"));
+            tcWeb.setCellValueFactory(new PropertyValueFactory<Escuderias, String>("Web"));
             //sin esto no podremos mostrar nada asi que es obligatorio
             tvOficina.setItems(data);
 
