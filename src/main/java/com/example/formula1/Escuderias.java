@@ -17,7 +17,13 @@ public class Escuderias {
 
     private  StringProperty CodigoPiloto2;
 
+    public Escuderias(int codigoEscuderia, String nombre, String patrocinador, String puntosE, String web) {
 
+    }
+
+    public Escuderias(int codigoEscuderia, String nombre, String patrocinador, int puntosE, String web) {
+
+    }
 
 
     //String CodigoEscuderia;
@@ -152,7 +158,6 @@ public class Escuderias {
         CodigoPiloto1 = codigoPiloto1;
         CodigoPiloto2 = codigoPiloto2;
     }
-
     /*
     public void setOfficeCode(String officeCode) {
         this.CodigoEscuderia = CodigoEscuderia;

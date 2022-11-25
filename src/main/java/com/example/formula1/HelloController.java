@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class HelloController {
@@ -65,10 +66,10 @@ public class HelloController {
             //de esta forma los mostramos en la tabla
             while (datos.next()) {
                 auxiliar = new Escuderias(
-                        datos.getString("CodigoEscuderia"),
+                        datos.getInt("CodigoEscuderia"),
                         datos.getString("Nombre"),
                         datos.getString("Patrocinador"),
-                        datos.getString("puntosE"),
+                        datos.getInt("puntosE"),
                         datos.getString("Web"));
 
                 data.add(auxiliar);
@@ -103,7 +104,129 @@ public class HelloController {
     }
 
 
+    //***************************************************************************************************************//
+//***************************************************************************************************************//
+//************************************************GUARDAR**********************************************************//
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+    @FXML
+    public boolean guardarEscuderia(ActionEvent actionEvent) {
+        try {
+            final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
+            final String usuario = "adminer";
+            final String passwd = "adminer";
+            int registrosAfectadosConsulta = 0;
+            Connection conexionBBDD;
+            conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
+            String SQLINSERT = "INSERT INTO Escuderias ("
+                    + " CodigoEscuderia ,"
+                    + " Nombre ,"
+                    + " Patrocinador ,"
+                    + " addressLine1 ,"
+                    + " addressLine2 ,"
+                    + " state ,"
+                    + " country ,"
+                    + " postalCode ,"
+                    + " territory )"
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+            PreparedStatement st = conexionBBDD.prepareStatement(SQLINSERT);
+            st.setString(1, tfCodigoEscuderia.getText());
+            st.setString(2, .getText());
+            st.setString(3, tfPhone.getText());
+            st.setString(4, tfAddres1.getText());
+            st.setString(5, tfAddres2.getText());
+            st.setString(6, tfState.getText());
+            st.setString(7, tfCountry.getText());
+            st.setString(8, tfPostalCode.getText());
+            st.setString(9, tfTerrytori.getText());
+
+
+            System.out.println("Funciona");
+            registrosAfectadosConsulta = st.executeUpdate();
+            st.close();
+            conexionBBDD.close();
+
+            if (registrosAfectadosConsulta == 1) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error:" + e.toString());
+            return false;
+        }
+    }
+
+    //***************************************************************************************************************//
+//***************************************************************************************************************//
+//************************************************BORRAR   esta sin implementar**********************************************************//
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+    @FXML
+    public void btnSeguro(ActionEvent actionEvent) {
+        Alert alert;
+
+        if ( ! tfOfficeCode.getText().trim().equals("")) {
+
+            alert = new Alert(Alert.AlertType.CONFIRMATION, "¿ Desea borrar la oficina con el código '"
+                    + tfOfficeCode.getText() + "' ?.", ButtonType.YES, ButtonType.NO );
+
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                int registroBorrados = 0;
+
+                try {
+                    // Nos conectamos
+                    final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
+                    final String usuario = "adminer";
+                    final String passwd = "adminer";
+
+                    Connection conexionBBDD;
+                    conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
+
+                    String SQLBORRAR = "DELETE FROM offices "
+                            + " WHERE officeCode = ? ";
+                    PreparedStatement st = conexionBBDD.prepareStatement(SQLBORRAR);
+
+                    st.setString(1, tfOfficeCode.getText());
+
+                    // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
+                    // nos devuelve el número de registros afectados. Al ser un Delete nos debe devolver 1 si se ha hecho correctamente
+                    registroBorrados = st.executeUpdate();
+                    st.close();
+                    conexionBBDD.close();
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Error:" + e.toString());
+
+                }
+                if (registroBorrados == 1) {
+
+                } else {
+                    alert = new Alert(Alert.AlertType.INFORMATION, "No se ha encontrado la oficina con el código '"
+                            + tfOfficeCode.getText() + "' .", ButtonType.OK );
+                    alert.showAndWait();
+                }
+            }
+        }
+        else {
+            alert = new Alert(Alert.AlertType.INFORMATION, "Debe indicar el código de la oficina a borrar.", ButtonType.OK );
+            alert.showAndWait();
+        }
+    }
+
+
+    //***************************************************************************************************************//
+//***************************************************************************************************************//
+//************************************************Nueva Escuderia**********************************************************//
+//***************************************************************************************************************//
+//***************************************************************************************************************//
     @FXML
     public void nuevaEscuderia(Event event) {
         try {
@@ -127,4 +250,5 @@ public class HelloController {
             throw new RuntimeException(e);
         }
     }
+
 }
