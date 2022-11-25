@@ -116,4 +116,15 @@ public class HelloController {
             throw new RuntimeException(e);
         }
     }
+    public void nuevoPiloto(Event event) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("nuevoPiloto.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

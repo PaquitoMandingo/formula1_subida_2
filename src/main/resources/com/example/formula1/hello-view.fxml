@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.formula1.HelloController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="666.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.formula1.HelloController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="391.0" minWidth="10.0" prefWidth="356.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.0" minWidth="0.0" prefWidth="330.0" />
@@ -32,7 +32,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" text="Consultar circuitos  " GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Consultar circuitos  " GridPane.columnIndex="2" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="20.0" top="30.0" />
          </GridPane.margin>
