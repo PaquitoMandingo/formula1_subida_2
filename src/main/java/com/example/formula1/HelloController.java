@@ -107,12 +107,8 @@ public class HelloController {
     public void nuevaEscuderia(Event event) {
         try {
             Stage stage = new Stage();
-
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("nuevaEscuderia.fxml"));
-
-
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

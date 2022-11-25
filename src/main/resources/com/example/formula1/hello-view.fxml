@@ -66,7 +66,7 @@
          <GridPane.margin>
             <Insets left="10.0" top="30.0" />
          </GridPane.margin></Button>
-      <Button fx:id="nuevaEscuderia" mnemonicParsing="false"  text="Añadir nueva escuderia  " GridPane.rowIndex="1">
+      <Button fx:id="nuevaEscuderia" mnemonicParsing="false" onAction="#nuevaEscuderia" text="Añadir nueva escuderia  " GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="20.0" top="30.0" />
          </GridPane.margin>
