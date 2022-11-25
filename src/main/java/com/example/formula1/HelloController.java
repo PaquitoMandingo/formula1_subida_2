@@ -3,11 +3,15 @@ package com.example.formula1;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -19,20 +23,18 @@ public class HelloController {
     @FXML
     private TableColumn tcCodigoEscuderia;
     @FXML
-    private TableColumn tcAnioCreacion;
-    @FXML
-    private TableColumn tcMundiales;
-    @FXML
-    private TableColumn tcPiloto1;
-    @FXML
-    private TableColumn tcPiloto2;
-    @FXML
     private TableColumn tcPatrocinador;
     @FXML
     private TableColumn tcWeb;
     @FXML
     private TableColumn tcPuntosMundialEscuderias;
     private Connection c;
+    @FXML
+    private TextField tfCodigoEscuderia;
+    @FXML
+    private TableView tableViewEscuderia;
+    @FXML
+    private Button nuevaEscuderia;
 
     //***************************************************************************************************************//
 //***************************************************************************************************************//
@@ -40,17 +42,18 @@ public class HelloController {
 //***************************************************************************************************************//
 //***************************************************************************************************************//
     public boolean cargar(ActionEvent actionEvent) {
+        ObservableList<Object> data = null;
         try {
             //creamos la conexion y le ponemos los datos con la ruta para que lo ejecute
-            final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
-            final String usuario = "adminer";
+            final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
+            final String usuario = "root";
             final String passwd = "adminer";
             Connection conexionBBDD;
 
             Escuderias auxiliar;
-            ObservableList<Object> data = FXCollections.observableArrayList();
-            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/noinch?useSSL=false"
-                    , "adminer",
+            data = FXCollections.observableArrayList();
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:5555/formula1?useSSL=false"
+                    , "root",
                     "adminer");
             ;
             //hacemos la consulta con los datos que queremos sacar
@@ -80,22 +83,40 @@ public class HelloController {
             tcPuntosMundialEscuderias.setCellValueFactory(new PropertyValueFactory<Escuderias, String>("puntosE"));
             tcWeb.setCellValueFactory(new PropertyValueFactory<Escuderias, String>("Web"));
             //sin esto no podremos mostrar nada asi que es obligatorio
-            tvOficina.setItems(data);
 
             //proximo paso insertar datos
             //para ello debemos volver a conectar a la base de datos
 
 
-
         } catch (Exception e) {
             e.printStackTrace();
             data.removeAll();
-            tvDatos.getColumns().clear();
-            tvDatos.setItems(null);
+            tableViewEscuderia.getColumns().clear();
+            System.out.println(e.toString());
+            tableViewEscuderia.setItems(null);
             System.out.println("Error on Building Data");
 
         }
+        tableViewEscuderia.setItems(data);
+        System.out.println(data);
         return false;
     }
 
+
+    @FXML
+    public void nuevaEscuderia(Event event) {
+        try {
+            Stage stage = new Stage();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("nuevaEscuderia.fxml"));
+
+
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

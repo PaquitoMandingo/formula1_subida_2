@@ -45,17 +45,13 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Label>
-      <TableView prefHeight="200.0" prefWidth="1007.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" GridPane.rowSpan="2147483647">
+      <TableView fx:id="tableViewEscuderia" prefHeight="200.0" prefWidth="1007.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" GridPane.rowSpan="2147483647">
         <columns>
-          <TableColumn fx:id="tcEscuderia" minWidth="20.0" prefWidth="100.0" text="Escuderia" />
           <TableColumn fx:id="tcCodigoEscuderia" minWidth="20.0" prefWidth="110.0" text="CodigoEscuderia" />
-            <TableColumn fx:id="tcAnioCreacion" minWidth="20.0" prefWidth="121.0" text="Anio de creacion" />
-            <TableColumn fx:id="tcMundiales" minWidth="20.0" prefWidth="127.0" text="Mundiales ganados" />
-            <TableColumn fx:id="tcPiloto1" minWidth="20.0" prefWidth="96.0" text="Piloto 1" />
-            <TableColumn fx:id="tcPiloto2" minWidth="20.0" prefWidth="92.0" text="Piloto 2" />
+          <TableColumn fx:id="tcEscuderia" minWidth="20.0" prefWidth="100.0" text="Escuderia" />
             <TableColumn fx:id="tcPatrocinador" minWidth="20.0" prefWidth="114.0" text="Patrocinador" />
-            <TableColumn fx:id="tcWeb" minWidth="20.0" prefWidth="113.0" text="Web" />
             <TableColumn fx:id="tcPuntosMundialEscuderias" minWidth="20.0" prefWidth="221.0" text="Puntos mundial de escuderias" />
+            <TableColumn fx:id="tcWeb" minWidth="20.0" prefWidth="113.0" text="Web" />
         </columns>
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
@@ -70,7 +66,7 @@
          <GridPane.margin>
             <Insets left="10.0" top="30.0" />
          </GridPane.margin></Button>
-      <Button mnemonicParsing="false" text="Añadir nueva escuderia  " GridPane.rowIndex="1">
+      <Button fx:id="nuevaEscuderia" mnemonicParsing="false"  text="Añadir nueva escuderia  " GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="20.0" top="30.0" />
          </GridPane.margin>
@@ -93,7 +89,7 @@
             <Insets top="5.0" />
          </padding>
       </TextField>
-      <Button mnemonicParsing="false" text="Buscar" GridPane.rowIndex="2">
+      <Button mnemonicParsing="false" onAction="#cargar" text="Buscar" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="270.0" top="20.0" />
          </GridPane.margin>
