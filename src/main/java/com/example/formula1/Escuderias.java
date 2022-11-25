@@ -17,6 +17,7 @@ public class Escuderias {
         this.CodigoEscuderia = CodigoEscuderia;
     }
 
+
     public void setCity(String city) {
         this.Nombre = Nombre;
     }
