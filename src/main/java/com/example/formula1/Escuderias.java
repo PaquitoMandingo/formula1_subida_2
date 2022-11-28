@@ -1,195 +1,154 @@
 package com.example.formula1;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Escuderias {
-    private  StringProperty CodigoEscuderia;
-    private  StringProperty Nombre;
-    private  StringProperty Patrocinador;
-    private  StringProperty puntosE;
-    private  StringProperty Web;
 
-    private  StringProperty AnioCreacion;
+    private IntegerProperty codigoEscuderia;
+    private StringProperty nombre;
+    private IntegerProperty anioCreacion;
+    private StringProperty mundialesGanados;
+    private StringProperty patrocinador;
+    private StringProperty web;
+    private IntegerProperty puntosE;
+    private IntegerProperty codigoPiloto1;
+    private IntegerProperty codigoPiloto2;
 
-    private  StringProperty MundialesGanados;
-
-    private  StringProperty CodigoPiloto1;
-
-    private  StringProperty CodigoPiloto2;
-
-    public Escuderias(int codigoEscuderia, String nombre, String patrocinador, String puntosE, String web) {
-
+    public Escuderias(int codigoEscuderia, String nombre, int anioCreacion, String mundialesGanados, String patrocinador, String web, int puntosE, int codigoPiloto1, int codigoPiloto2) {
+        this.codigoEscuderia = new SimpleIntegerProperty(codigoEscuderia);
+        this.nombre = new SimpleStringProperty(nombre);
+        this.anioCreacion = new SimpleIntegerProperty(anioCreacion);
+        this.mundialesGanados = new SimpleStringProperty(mundialesGanados);
+        this.patrocinador = new SimpleStringProperty(patrocinador);
+        this.web = new SimpleStringProperty(web);
+        this.puntosE = new SimpleIntegerProperty(puntosE);
+        this.codigoPiloto1 = new SimpleIntegerProperty(codigoPiloto1);
+        this.codigoPiloto2 = new SimpleIntegerProperty(codigoPiloto2);
     }
 
-    public Escuderias(int codigoEscuderia, String nombre, String patrocinador, int puntosE, String web) {
-
+    public int getCodigoEscuderia() {
+        return codigoEscuderia.get();
     }
 
-
-    //String CodigoEscuderia;
-
-    @Override
-    public String toString() {
-        return "Escuderia{" +
-                "CodigoEscuderia='" + CodigoEscuderia + '\'' +
-                ", Nombre='" + Nombre + '\'' +
-                ", Patrocinador='" + Patrocinador + '\'' +
-                ", puntose='" + puntosE + '\'' +
-                ", Web='" + Web + '\'' +
-                '}';
+    public IntegerProperty codigoEscuderiaProperty() {
+        return codigoEscuderia;
     }
 
-    public String getCodigoEscuderia() {
-        return CodigoEscuderia.get();
-    }
-
-    public StringProperty codigoEscuderiaProperty() {
-        return CodigoEscuderia;
-    }
-
-    public void setCodigoEscuderia(String codigoEscuderia) {
-        this.CodigoEscuderia.set(codigoEscuderia);
+    public void setCodigoEscuderia(int codigoEscuderia) {
+        this.codigoEscuderia.set(codigoEscuderia);
     }
 
     public String getNombre() {
-        return Nombre.get();
+        return nombre.get();
     }
 
     public StringProperty nombreProperty() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.Nombre.set(nombre);
+        this.nombre.set(nombre);
     }
 
-    public String getPatrocinador() {
-        return Patrocinador.get();
+    public int getAnioCreacion() {
+        return anioCreacion.get();
     }
 
-    public StringProperty patrocinadorProperty() {
-        return Patrocinador;
+    public IntegerProperty anioCreacionProperty() {
+        return anioCreacion;
     }
 
-    public void setPatrocinador(String patrocinador) {
-        this.Patrocinador.set(patrocinador);
-    }
-
-    public String getPuntosE() {
-        return puntosE.get();
-    }
-
-    public StringProperty puntosEProperty() {
-        return puntosE;
-    }
-
-    public void setPuntosE(String puntosE) {
-        this.puntosE.set(puntosE);
-    }
-
-    public String getWeb() {
-        return Web.get();
-    }
-
-    public StringProperty webProperty() {
-        return Web;
-    }
-
-    public void setWeb(String web) {
-        this.Web.set(web);
-    }
-
-    public String getAnioCreacion() {
-        return AnioCreacion.get();
-    }
-
-    public StringProperty anioCreacionProperty() {
-        return AnioCreacion;
-    }
-
-    public void setAnioCreacion(String anioCreacion) {
-        this.AnioCreacion.set(anioCreacion);
+    public void setAnioCreacion(int anioCreacion) {
+        this.anioCreacion.set(anioCreacion);
     }
 
     public String getMundialesGanados() {
-        return MundialesGanados.get();
+        return mundialesGanados.get();
     }
 
     public StringProperty mundialesGanadosProperty() {
-        return MundialesGanados;
+        return mundialesGanados;
     }
 
     public void setMundialesGanados(String mundialesGanados) {
-        this.MundialesGanados.set(mundialesGanados);
+        this.mundialesGanados.set(mundialesGanados);
     }
 
-    public String getCodigoPiloto1() {
-        return CodigoPiloto1.get();
+    public String getPatrocinador() {
+        return patrocinador.get();
     }
 
-    public StringProperty codigoPiloto1Property() {
-        return CodigoPiloto1;
-    }
-
-    public void setCodigoPiloto1(String codigoPiloto1) {
-        this.CodigoPiloto1.set(codigoPiloto1);
-    }
-
-    public String getCodigoPiloto2() {
-        return CodigoPiloto2.get();
-    }
-
-    public StringProperty codigoPiloto2Property() {
-        return CodigoPiloto2;
-    }
-
-    public void setCodigoPiloto2(String codigoPiloto2) {
-        this.CodigoPiloto2.set(codigoPiloto2);
-    }
-
-    public Escuderias(StringProperty codigoEscuderia, StringProperty nombre, StringProperty patrocinador, StringProperty puntosE, StringProperty web, StringProperty anioCreacion, StringProperty mundialesGanados, StringProperty codigoPiloto1, StringProperty codigoPiloto2) {
-        CodigoEscuderia = codigoEscuderia;
-        Nombre = nombre;
-        Patrocinador = patrocinador;
-        this.puntosE = puntosE;
-        Web = web;
-        AnioCreacion = anioCreacion;
-        MundialesGanados = mundialesGanados;
-        CodigoPiloto1 = codigoPiloto1;
-        CodigoPiloto2 = codigoPiloto2;
-    }
-    /*
-    public void setOfficeCode(String officeCode) {
-        this.CodigoEscuderia = CodigoEscuderia;
-    }
-
-    public void setCity(String city) {
-        this.Nombre = Nombre;
+    public StringProperty patrocinadorProperty() {
+        return patrocinador;
     }
 
     public void setPatrocinador(String patrocinador) {
-        this.Patrocinador = patrocinador;
+        this.patrocinador.set(patrocinador);
     }
 
-    public void setAddressLine1(String puntosE) {
-        this.puntosE = puntosE;
+    public String getWeb() {
+        return web.get();
     }
 
-    public void setAddressLine2(String Web) {
-        this.puntosE = Web;
+    public StringProperty webProperty() {
+        return web;
     }
-    
 
-    String Nombre;
-    String Patrocinador;
-    String puntosE;
-    String Web;
+    public void setWeb(String web) {
+        this.web.set(web);
+    }
 
-    public Escuderias(String CodigoEscuderia, String Nombre, String Patrocinador, String puntosE, String Web) {
-        this.CodigoEscuderia = CodigoEscuderia;
-        this.Nombre = Nombre;
-        this.Patrocinador = Patrocinador;
-        this.puntosE = puntosE;
-        this.Web = Web;
-    }*/
+    public int getPuntosE() {
+        return puntosE.get();
+    }
+
+    public IntegerProperty puntosEProperty() {
+        return puntosE;
+    }
+
+    public void setPuntosE(int puntosE) {
+        this.puntosE.set(puntosE);
+    }
+
+    public int getCodigoPiloto1() {
+        return codigoPiloto1.get();
+    }
+
+    public IntegerProperty codigoPiloto1Property() {
+        return codigoPiloto1;
+    }
+
+    public void setCodigoPiloto1(int codigoPiloto1) {
+        this.codigoPiloto1.set(codigoPiloto1);
+    }
+
+    public int getCodigoPiloto2() {
+        return codigoPiloto2.get();
+    }
+
+    public IntegerProperty codigoPiloto2Property() {
+        return codigoPiloto2;
+    }
+
+    public void setCodigoPiloto2(int codigoPiloto2) {
+        this.codigoPiloto2.set(codigoPiloto2);
+    }
+
+    @Override
+    public String toString() {
+        return "Escuderias{" +
+                "codigoEscuderia=" + codigoEscuderia +
+                ", nombre=" + nombre +
+                ", anioCreacion=" + anioCreacion +
+                ", mundialesGanados=" + mundialesGanados +
+                ", patrocinador=" + patrocinador +
+                ", web=" + web +
+                ", puntosE=" + puntosE +
+                ", codigoPiloto1=" + codigoPiloto1 +
+                ", codigoPiloto2=" + codigoPiloto2 +
+                '}';
+    }
 }

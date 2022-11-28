@@ -6,4 +6,6 @@ module com.example.formula1 {
 
     opens com.example.formula1 to javafx.fxml;
     exports com.example.formula1;
+    exports Controladors;
+    opens Controladors to javafx.fxml;
 }
