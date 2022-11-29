@@ -32,9 +32,9 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Consultar circuitos  " GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Consultar circuitos  " GridPane.rowIndex="9">
          <GridPane.margin>
-            <Insets left="20.0" top="30.0" />
+            <Insets bottom="20.0" left="20.0" top="30.0" />
          </GridPane.margin>
       </Button>
       <Label text="INFORMACION ESCUDERIAS F1" GridPane.columnSpan="3">
@@ -45,54 +45,79 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Label>
-      <TableView fx:id="tableViewEscuderia" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1007.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" GridPane.rowSpan="2147483647">
+      <TableView fx:id="tableViewEscuderia" minHeight="-Infinity" prefHeight="200.0" prefWidth="1007.0" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" GridPane.rowSpan="2147483647">
         <columns>
-          <TableColumn fx:id="tcCodigoEscuderia" minWidth="20.0" prefWidth="110.0" text="CodigoEscuderia" />
-          <TableColumn fx:id="tcEscuderia" minWidth="20.0" prefWidth="100.0" text="Escuderia" />
-            <TableColumn fx:id="tcPatrocinador" minWidth="20.0" prefWidth="114.0" text="Patrocinador" />
-            <TableColumn fx:id="tcPuntosMundialEscuderias" minWidth="20.0" prefWidth="221.0" text="Puntos mundial de escuderias" />
-            <TableColumn fx:id="tcWeb" minWidth="20.0" prefWidth="113.0" text="Web" />
+          <TableColumn fx:id="tcCodigoEscuderia" minWidth="20.0" prefWidth="124.0" text="CodigoEscuderia" />
+          <TableColumn fx:id="tcEscuderia" minWidth="20.0" prefWidth="114.0" text="Escuderia" />
+            <TableColumn fx:id="tcPatrocinador" minWidth="20.0" prefWidth="201.0" text="Patrocinador" />
+            <TableColumn fx:id="tcPuntosMundialEscuderias" minWidth="20.0" prefWidth="210.0" text="Puntos mundial de escuderias" />
+            <TableColumn fx:id="tcWeb" minWidth="20.0" prefWidth="205.0" text="Web" />
         </columns>
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
          </GridPane.margin>
       </TableView>
-      <Button mnemonicParsing="false" text="Ver piloto seleccionado" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" text=" Ver piloto seleccionado " GridPane.rowIndex="8">
          <GridPane.margin>
-            <Insets left="120.0" top="30.0" />
+            <Insets left="20.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#nuevoPiloto" text="Ver pilotos  " GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" onAction="#nuevoPiloto" text=" Ver pilotos  " GridPane.rowIndex="7">
          <GridPane.margin>
-            <Insets left="10.0" top="30.0" />
-         </GridPane.margin></Button>
-      <Button fx:id="nuevaEscuderia" mnemonicParsing="false" onAction="#nuevaEscuderia" text="Añadir nueva escuderia  " GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="20.0" top="30.0" />
+            <Insets left="20.0" top="10.0" />
          </GridPane.margin>
-      </Button>
-      <Button mnemonicParsing="false" text="Borrar escuderia()Borrar añadir en la pestaña de edicion" GridPane.rowIndex="1">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <Button fx:id="nuevaEscuderia" mnemonicParsing="false" onAction="#nuevaEscuderia" text="Añadir nueva escuderia  " GridPane.rowIndex="4">
          <GridPane.margin>
-            <Insets left="200.0" top="30.0" />
+            <Insets left="20.0" />
          </GridPane.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
       </Button>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca la escuderia que esta buscando:" GridPane.rowIndex="2">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca la escuderia que esta buscando:" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" />
          </GridPane.margin>
+         <font>
+            <Font size="13.0" />
+         </font>
       </Text>
-      <TextField fx:id="tfCodigoEscuderia" GridPane.rowIndex="2">
+      <TextField fx:id="tfCodigoEscuderia" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets left="20.0" right="120.0" top="25.0" />
+            <Insets left="20.0" right="100.0" top="30.0" />
          </GridPane.margin>
          <padding>
-            <Insets top="5.0" />
+            <Insets top="10.0" />
          </padding>
       </TextField>
-      <Button mnemonicParsing="false" onAction="#cargar" text="Buscar" GridPane.rowIndex="2">
+      <Button mnemonicParsing="false" onAction="#cargar" text="" GridPane.rowIndex="3">
          <GridPane.margin>
-            <Insets left="270.0" top="20.0" />
+            <Insets left="275.0" top="20.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#btnSeguro" text=" Borrar escuderia " GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets bottom="30.0" left="20.0" />
          </GridPane.margin>
       </Button>
+      <TextField fx:id="tfCodigoEscuderia_Borrar" GridPane.rowIndex="5">
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets left="20.0" right="150.0" top="25.0" />
+         </GridPane.margin>
+      </TextField>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Introduzca la escuderia que desea borrar" GridPane.rowIndex="5">
+         <GridPane.margin>
+            <Insets bottom="40.0" left="20.0" />
+         </GridPane.margin>
+      </Text>
    </children>
 </GridPane>

@@ -38,6 +38,8 @@ public class HelloController {
     private TableView tableViewEscuderia;
     @FXML
     private Button nuevaEscuderia;
+    @FXML
+    private TextField tfCodigoEscuderia_Borrar;
 
 
     public void initialize(){
@@ -184,11 +186,73 @@ public class HelloController {
     }
 
 
-
-
-    //***************************************************************************************************************//
 //***************************************************************************************************************//
-//************************************************Nueva Escuderia**********************************************************//
+//***************************************************************************************************************//
+//************************************************Borrar con advertencia*****************************************//
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+
+
+    @Deprecated
+    public void btnSeguro(ActionEvent actionEvent) {
+        Alert alert;
+
+        if ( ! tfCodigoEscuderia_Borrar.getText().trim().equals("")) {
+
+            alert = new Alert(Alert.AlertType.CONFIRMATION, "¿Seguro que desea borrar la escuderia con el codigo '"
+                    + tfCodigoEscuderia_Borrar.getText() + "' ?.", ButtonType.YES, ButtonType.NO );
+
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                int registroBorrados = 0;
+
+                try {
+                    // Nos conectamos
+                    final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
+                    final String usuario = "adminer";
+                    final String passwd = "adminer";
+
+                    Connection conexionBBDD;
+                    conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
+
+                    String SQLBORRAR = "DELETE FROM offices "
+                            + " WHERE officeCode = ? ";
+                    PreparedStatement st = conexionBBDD.prepareStatement(SQLBORRAR);
+
+                    st.setString(1, tfCodigoEscuderia_Borrar.getText());
+
+                    // Ejecutamos la consulta preparada (con las ventajas de seguridad y velocidad en el servidor de BBDD
+                    // nos devuelve el número de registros afectados. Al ser un Delete nos debe devolver 1 si se ha hecho correctamente
+                    registroBorrados = st.executeUpdate();
+                    st.close();
+                    conexionBBDD.close();
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Error:" + e.toString());
+
+                }
+                if (registroBorrados == 1) {
+
+                } else {
+                    alert = new Alert(Alert.AlertType.INFORMATION, "No se ha encontrado la escuderia con el código '"
+                            + tfCodigoEscuderia_Borrar.getText() + "' .", ButtonType.OK );
+                    alert.showAndWait();
+                }
+            }
+        }
+        else {
+            alert = new Alert(Alert.AlertType.INFORMATION, "Debe indicar el código de la escuderia a borrar.", ButtonType.OK );
+            alert.showAndWait();
+        }
+    }
+
+
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+//************************************************Nueva Escuderia************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
     @FXML
