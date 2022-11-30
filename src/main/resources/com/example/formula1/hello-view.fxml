@@ -32,7 +32,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Consultar circuitos  " GridPane.rowIndex="9">
+      <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Consultar circuitos  " onAction="#circuitos" GridPane.rowIndex="9">
          <GridPane.margin>
             <Insets bottom="20.0" left="20.0" top="30.0" />
          </GridPane.margin>

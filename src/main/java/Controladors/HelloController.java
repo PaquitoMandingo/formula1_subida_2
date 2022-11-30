@@ -1,5 +1,6 @@
 package Controladors;
 
+import com.example.formula1.Circuitos;
 import com.example.formula1.Escuderias;
 import com.example.formula1.HelloApplication;
 import javafx.collections.FXCollections;
@@ -277,6 +278,15 @@ public class HelloController {
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setScene(scene);
             stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void circuitos(Event event) {
+        Circuitos circuitos = new Circuitos();
+        Stage stage = new Stage();
+        try {
+            circuitos.start(stage);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
