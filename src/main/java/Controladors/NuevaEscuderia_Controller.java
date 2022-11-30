@@ -1,100 +1,124 @@
 package Controladors;
 
+import com.example.formula1.Escuderias;
+import com.example.formula1.HelloApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 public class NuevaEscuderia_Controller
 {
 
+
     @FXML
-    private TableColumn tcCodigoPiloto;
+    private TextField tfAnadirCodigoEscuderia;
     @FXML
-    private TableColumn tcNombrePiloto;
+    private TextField tfNombreEscuderia;
     @FXML
-    private TableColumn tcApellidoPiloto;
+    private TextField tfAnioCreacion;
     @FXML
-    private TableColumn tcNacionalidad;
+    private TextField tfMundiales;
     @FXML
-    private TableColumn tcEscuderiaPiloto;
+    private TextField tfPatrocinadores;
     @FXML
-    private TableColumn tcEstatura;
+    private TextField tfWeb;
     @FXML
-    private TableColumn tcPeso;
+    private TextField tfPuntosMundialesEquipos;
     @FXML
-    private TableColumn tcDorsal;
+    private TextField tfCodigoPiloto1;
     @FXML
-    private TableColumn tcFechaNac;
+    private TextField tfCodigoPiloto2;
     @FXML
-    private TableColumn tcCampeonatosMundiales;
+    private Button btnAnadirEscuderia;
     @FXML
-    private TableColumn tcPrimeraVictoria;
-    @FXML
-    private TableColumn tcPuntosTemporada;
+    private Button btnVolver;
 
     @javafx.fxml.FXML
     public void initialize() {
 
     }
+    public void volver(ActionEvent event){
 
+        try {
+            FXMLLoader fxmlLoader2 = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+            Parent root = null;
+            root = fxmlLoader2.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Escuderias");
+            stage.setScene(scene);
+            stage.show();
+
+            Stage stage3 = (Stage) this.btnVolver.getScene().getWindow();
+            stage3.close();
+        }catch (IOException E){
+
+        }
+    }
 
     //***************************************************************************************************************//
 //***************************************************************************************************************//
 //****************************************Guardar datos**********************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
-    @Deprecated
-    public boolean guardar(ActionEvent actionEvent) {
+
+    public void guardar(ActionEvent actionEvent) {
         try {
-            final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
+            final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
             final String usuario = "root";
             final String passwd = "adminer";
             int registrosAfectadosConsulta = 0;
             Connection conexionBBDD;
             conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
             String SQLINSERT = "INSERT INTO escuderia ("
-                    + " codigoEscuderia ,"
-                    + " nombre ,"
-                    + " anioCreacion ,"
+                    + " CodigoEscuderia ,"
+                    + " Nombre ,"
+                    + " AnioCreacion ,"
+                    + " MundialesGanados, "
                     + " patrocinador ,"
-                    + " web ,"
+                    + " Web ,"
                     + " puntosE ,"
-                    + " codigoPiloto1 ,"
-                    + " codigoPiloto2 )"
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + " CodigoPiloto1 ,"
+                    + " CodigoPiloto2 )"
+                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
             PreparedStatement st = conexionBBDD.prepareStatement(SQLINSERT);
-            st.setString(1, tfAnadirCodigoEscuderia.getText());
+            st.setInt(1, Integer.parseInt(tfAnadirCodigoEscuderia.getText()));
             st.setString(2, tfNombreEscuderia.getText());
-            st.setString(3, tfAnioCreacion.getText());
+            st.setInt(3, Integer.parseInt(tfAnioCreacion.getText()));
             st.setString(4, tfMundiales.getText());
             st.setString(5, tfPatrocinadores.getText());
             st.setString(6, tfWeb.getText());
-            st.setString(7, tfPuntosMundialesEquipos.getText());
-            st.setString(8, tfCodigoPiloto1.getText());
-            st.setString(9, tfCodigoPiloto2.getText());
+            st.setInt(7, Integer.parseInt(tfPuntosMundialesEquipos.getText()));
+            st.setObject(8, tfCodigoPiloto1.getText().isBlank() ? null :Integer.parseInt(tfCodigoPiloto1.getText()));
+            st.setObject(9, tfCodigoPiloto2.getText().isBlank() ? null :Integer.parseInt(tfCodigoPiloto2.getText()));
 
 
             System.out.println("Funciona");
-            registrosAfectadosConsulta = st.executeUpdate();
+            st.executeUpdate();
             st.close();
             conexionBBDD.close();
 
-            if (registrosAfectadosConsulta == 1) {
-                return true;
-            } else {
-                return false;
-            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error:" + e.toString());
-            return false;
+
         }
     }
+
+
+
 }

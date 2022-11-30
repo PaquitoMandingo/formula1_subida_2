@@ -263,6 +263,9 @@ public class HelloController {
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setScene(scene);
             stage.show();
+
+            Stage stage3 = (Stage) this.nuevaEscuderia.getScene().getWindow();
+            stage3.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
