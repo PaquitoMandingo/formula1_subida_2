@@ -2,6 +2,7 @@ package Controladors;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.sql.Connection;
@@ -10,39 +11,44 @@ import java.sql.PreparedStatement;
 
 public class NuevaEscuderia_Controller
 {
+
+    @FXML
+    private TableColumn tcCodigoPiloto;
+    @FXML
+    private TableColumn tcNombrePiloto;
+    @FXML
+    private TableColumn tcApellidoPiloto;
+    @FXML
+    private TableColumn tcNacionalidad;
+    @FXML
+    private TableColumn tcEscuderiaPiloto;
+    @FXML
+    private TableColumn tcEstatura;
+    @FXML
+    private TableColumn tcPeso;
+    @FXML
+    private TableColumn tcDorsal;
+    @FXML
+    private TableColumn tcFechaNac;
+    @FXML
+    private TableColumn tcCampeonatosMundiales;
+    @FXML
+    private TableColumn tcPrimeraVictoria;
+    @FXML
+    private TableColumn tcPuntosTemporada;
+
     @javafx.fxml.FXML
     public void initialize() {
 
     }
-    @FXML
-    private TextField tfCodigoEscuderia;
-    @FXML
-    private TextField tfNombreEscuderia;
-    @FXML
-    private TextField tfAnioCreacion;
-    @FXML
-    private TextField tfMundiales;
-    @FXML
-    private TextField tfPatrocinadores;
-    @FXML
-    private TextField tfWeb;
-    @FXML
-    private TextField tfPuntosMundialesEquipos;
-
-    @FXML
-    private TextField tfCodigoPiloto1;
-    @FXML
-    private TextField tfCodigoPiloto2;
 
 
-
-
-//***************************************************************************************************************//
+    //***************************************************************************************************************//
 //***************************************************************************************************************//
 //****************************************Guardar datos**********************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
-    @FXML
+    @Deprecated
     public boolean guardar(ActionEvent actionEvent) {
         try {
             final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
@@ -51,7 +57,7 @@ public class NuevaEscuderia_Controller
             int registrosAfectadosConsulta = 0;
             Connection conexionBBDD;
             conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
-            String SQLINSERT = "INSERT INTO escuderias ("
+            String SQLINSERT = "INSERT INTO escuderia ("
                     + " codigoEscuderia ,"
                     + " nombre ,"
                     + " anioCreacion ,"
@@ -63,7 +69,7 @@ public class NuevaEscuderia_Controller
                     + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = conexionBBDD.prepareStatement(SQLINSERT);
-            st.setString(1, tfCodigoEscuderia.getText());
+            st.setString(1, tfAnadirCodigoEscuderia.getText());
             st.setString(2, tfNombreEscuderia.getText());
             st.setString(3, tfAnioCreacion.getText());
             st.setString(4, tfMundiales.getText());

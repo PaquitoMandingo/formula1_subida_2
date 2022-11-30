@@ -10,11 +10,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="Controladors.NuevaEscuderia_Controller">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="1233.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladors.NuevaEscuderia_Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,6 +33,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pilotos inscritos en la temporada">
@@ -36,11 +43,18 @@
       </Text>
       <TableView prefHeight="200.0" prefWidth="394.0" GridPane.columnIndex="2" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" GridPane.rowSpan="2147483647">
         <columns>
-          <TableColumn prefWidth="75.0" text="Codigo Piloto" />
-          <TableColumn prefWidth="75.0" text="Nombre del piloto" />
-            <TableColumn prefWidth="75.0" text="Codigo Piloto" />
-            <TableColumn prefWidth="75.0" text="Codigo Piloto" />
-            <TableColumn prefWidth="75.0" text="Codigo Piloto" />
+          <TableColumn fx:id="tcCodigoPiloto" prefWidth="82.0" text="Codigo Piloto" />
+          <TableColumn fx:id="tcNombrePiloto" minWidth="0.0" prefWidth="77.0" text="Nombre" />
+            <TableColumn fx:id="tcApellidoPiloto" minWidth="6.0" prefWidth="63.0" text="Apellido" />
+            <TableColumn fx:id="tcNacionalidad" prefWidth="91.0" text="Nacionalidad" />
+            <TableColumn fx:id="tcEscuderiaPiloto" prefWidth="99.0" text="Escuderia Piloto" />
+            <TableColumn fx:id="tcEstatura" prefWidth="73.0" text="Estatura" />
+            <TableColumn fx:id="tcPeso" prefWidth="59.0" text="Peso" />
+            <TableColumn fx:id="tcDorsal" prefWidth="69.0" text="Dorsal" />
+            <TableColumn fx:id="tcFechaNac" prefWidth="88.0" text="FechaNac" />
+            <TableColumn fx:id="tcCampeonatosMundiales" prefWidth="149.0" text="CampeonatosMundiales" />
+            <TableColumn fx:id="tcPrimeraVictoria" prefWidth="94.0" text="PrimeraVictoria" />
+            <TableColumn fx:id="tcPuntosTemporada" prefWidth="100.0" text="PuntosTemporada" />
         </columns>
       </TableView>
       <TextField GridPane.columnIndex="1" GridPane.rowIndex="2">
