@@ -7,7 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,7 +21,6 @@ import java.sql.PreparedStatement;
 
 public class NuevaEscuderia_Controller
 {
-
 
     @FXML
     private TextField tfAnadirCodigoEscuderia;
@@ -67,58 +68,63 @@ public class NuevaEscuderia_Controller
         }
     }
 
-    //***************************************************************************************************************//
+//***************************************************************************************************************//
 //***************************************************************************************************************//
 //****************************************Guardar datos**********************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
 
+    @FXML
     public void guardar(ActionEvent actionEvent) {
-        try {
-            final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
-            final String usuario = "root";
-            final String passwd = "adminer";
-            int registrosAfectadosConsulta = 0;
-            Connection conexionBBDD;
-            conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
-            String SQLINSERT = "INSERT INTO escuderia ("
-                    + " CodigoEscuderia ,"
-                    + " Nombre ,"
-                    + " AnioCreacion ,"
-                    + " MundialesGanados, "
-                    + " patrocinador ,"
-                    + " Web ,"
-                    + " puntosE ,"
-                    + " CodigoPiloto1 ,"
-                    + " CodigoPiloto2 )"
-                    + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,?)";
+        Alert alert;
 
-            PreparedStatement st = conexionBBDD.prepareStatement(SQLINSERT);
-            st.setInt(1, Integer.parseInt(tfAnadirCodigoEscuderia.getText()));
-            st.setString(2, tfNombreEscuderia.getText());
-            st.setInt(3, Integer.parseInt(tfAnioCreacion.getText()));
-            st.setString(4, tfMundiales.getText());
-            st.setString(5, tfPatrocinadores.getText());
-            st.setString(6, tfWeb.getText());
-            st.setInt(7, Integer.parseInt(tfPuntosMundialesEquipos.getText()));
-            st.setObject(8, tfCodigoPiloto1.getText().isBlank() ? null :Integer.parseInt(tfCodigoPiloto1.getText()));
-            st.setObject(9, tfCodigoPiloto2.getText().isBlank() ? null :Integer.parseInt(tfCodigoPiloto2.getText()));
+        if (!btnAnadirEscuderia.getText().trim().equals("")) {
 
+            alert = new Alert(Alert.AlertType.CONFIRMATION, "Se ha añadido correctamente'");
 
-            System.out.println("Funciona");
-            st.executeUpdate();
-            st.close();
-            conexionBBDD.close();
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.OK) {
+                try {
+                    final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
+                    final String usuario = "root";
+                    final String passwd = "adminer";
+                    int registrosAfectadosConsulta = 0;
+                    Connection conexionBBDD;
+                    conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
+                    String SQLINSERT = "INSERT INTO escuderia ("
+                            + " CodigoEscuderia ,"
+                            + " Nombre ,"
+                            + " AnioCreacion ,"
+                            + " MundialesGanados, "
+                            + " patrocinador ,"
+                            + " Web ,"
+                            + " puntosE ,"
+                            + " CodigoPiloto1 ,"
+                            + " CodigoPiloto2 )"
+                            + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
+                    PreparedStatement st = conexionBBDD.prepareStatement(SQLINSERT);
+                    st.setInt(1, Integer.parseInt(tfAnadirCodigoEscuderia.getText()));
+                    st.setString(2, tfNombreEscuderia.getText());
+                    st.setInt(3, Integer.parseInt(tfAnioCreacion.getText()));
+                    st.setString(4, tfMundiales.getText());
+                    st.setString(5, tfPatrocinadores.getText());
+                    st.setString(6, tfWeb.getText());
+                    st.setInt(7, Integer.parseInt(tfPuntosMundialesEquipos.getText()));
+                    st.setObject(8, tfCodigoPiloto1.getText().isBlank() ? null : Integer.parseInt(tfCodigoPiloto1.getText()));
+                    st.setObject(9, tfCodigoPiloto2.getText().isBlank() ? null : Integer.parseInt(tfCodigoPiloto2.getText()));
 
+                    System.out.println("Funciona");
+                    st.executeUpdate();
+                    st.close();
+                    conexionBBDD.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error:" + e.toString());
-
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Error:" + e.toString());
+                }
+            }
         }
     }
-
-
 
 }

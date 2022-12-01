@@ -2,8 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -11,10 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladors.NuevaEscuderia_Controller">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../style/st.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladors.NuevaEscuderia_Controller">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -30,13 +29,9 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rellene los campos para añadir una nueva escuderia">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rellene los campos para añadir una nueva escuderia" GridPane.rowIndex="1">
          <font>
             <Font size="18.0" />
          </font>
@@ -44,28 +39,22 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
-        <columns>
-          <TableColumn prefWidth="100.0" text="C1" />
-          <TableColumn minWidth="0.0" prefWidth="50.0" text="C2" />
-        </columns>
-      </TableView>
-      <TextField fx:id="tfAnadirCodigoEscuderia" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="tfAnadirCodigoEscuderia" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CodigoEscuderia" GridPane.rowIndex="2">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CodigoEscuderia" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfNombreEscuderia" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <TextField fx:id="tfNombreEscuderia" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" GridPane.rowIndex="3">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" GridPane.columnIndex="3" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
@@ -80,42 +69,42 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfMundiales" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField fx:id="tfMundiales" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mundiales" GridPane.rowIndex="5">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mundiales" GridPane.columnIndex="3" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfPatrocinadores" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <TextField fx:id="tfPatrocinadores" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patrocinadores" GridPane.rowIndex="6">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patrocinadores" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfWeb" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <TextField fx:id="tfWeb" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Web" GridPane.rowIndex="7">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Web" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfPuntosMundialesEquipos" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <TextField fx:id="tfPuntosMundialesEquipos" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Puntos del equipo de mundiales" wrappingWidth="124.625" GridPane.rowIndex="8">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Puntos del equipo de mundiales" wrappingWidth="124.625" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
@@ -123,30 +112,33 @@
             <Font size="9.0" />
          </font>
       </Text>
-      <TextField fx:id="tfCodigoPiloto1" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="9">
+      <TextField fx:id="tfCodigoPiloto1" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Piloto 1" GridPane.rowIndex="9">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Piloto 1" GridPane.columnIndex="3" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfCodigoPiloto2" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="10">
+      <TextField fx:id="tfCodigoPiloto2" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </TextField>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Piloto 2" GridPane.rowIndex="10">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Piloto 2" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <Button fx:id="btnAnadirEscuderia" mnemonicParsing="false" onAction="#guardar" text="Añadir" GridPane.rowIndex="12">
+      <Button fx:id="btnAnadirEscuderia" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#guardar" text="Añadir " GridPane.columnIndex="1" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin></Button>
-      <Button fx:id="btnVolver" mnemonicParsing="false" onAction="#volver" text="" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+      <Button fx:id="btnVolver" mnemonicParsing="false" onAction="#volver" text="" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
    </children>
 </GridPane>

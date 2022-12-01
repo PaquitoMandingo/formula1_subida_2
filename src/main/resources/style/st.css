@@ -1,0 +1,27 @@
+.root{
+     -fx-background-color: #ffffff;
+     -fx-font-family: Verdana;
+}
+
+.button{
+    -fx-background-color: #fff0c9;
+}
+
+.button:hover{
+    -fx-background-color: #ffbf1f;
+    -fx-cursor: hand;
+    -fx-text-fill: ffffff;
+}
+
+.table-view .table-cell{
+    -fx-padding: 10px 10px 10px 10px;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #fff0c9;
+    -fx-size: 45;
+}
+
+.table-view .column-header .label{
+    -fx-font-size: 14px;
+}

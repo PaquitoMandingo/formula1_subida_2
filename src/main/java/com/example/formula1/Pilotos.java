@@ -1,58 +1,66 @@
 package com.example.formula1;
 
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.time.Year;
 
 public class Pilotos {
 
-    private IntegerProperty codigoPiloto;
+    private final IntegerProperty codigoPiloto;
 
-    private StringProperty Nombre;
+    private final StringProperty Nombre;
 
-    private StringProperty Apellidos;
+    private final StringProperty Apellidos;
 
-    private StringProperty Nacionalidad;
+    private final StringProperty Nacionalidad;
 
-    private IntegerProperty CodigoEscuderiaPiloto;
+    private final IntegerProperty CodigoEscuderiaPiloto;
 
-    private DecimalFormat Estatura;
+    private final DoubleProperty Estatura;
 
-    private FloatProperty Peso;
+    private final FloatProperty Peso;
 
-    private IntegerProperty dorsal;
+    private final IntegerProperty dorsal;
 
-    private DateFormat fechaNacimiento;
+    private final StringProperty fechaNacimiento;
 
-    private IntegerProperty CampeonatosMundiales;
+    private final IntegerProperty CampeonatosMundiales;
 
-    private StringProperty primeraVictoria;
+    private final StringProperty primeraVictoria;
 
-    private IntegerProperty Puntos;
+    private final IntegerProperty Puntos;
 
-    public Pilotos(IntegerProperty codigoPiloto, StringProperty nombre, StringProperty apellidos, StringProperty nacionalidad, IntegerProperty codigoEscuderiaPiloto, DecimalFormat estatura, FloatProperty peso, IntegerProperty dorsal, DateFormat fechaNacimiento, IntegerProperty campeonatosMundiales, StringProperty primeraVictoria, IntegerProperty puntos) {
-        this.codigoPiloto = codigoPiloto;
-        Nombre = nombre;
-        Apellidos = apellidos;
-        Nacionalidad = nacionalidad;
-        CodigoEscuderiaPiloto = codigoEscuderiaPiloto;
-        Estatura = estatura;
-        Peso = peso;
-        this.dorsal = dorsal;
-        this.fechaNacimiento = fechaNacimiento;
-        CampeonatosMundiales = campeonatosMundiales;
-        this.primeraVictoria = primeraVictoria;
-        Puntos = puntos;
+    public Pilotos(Integer codigoPiloto,
+                   String Nombre,
+                   String Apellidos,
+                   String Nacionalidad,
+                   Integer CodigoEscuderiaPiloto,
+                   Double Estatura,
+                   Float Peso,
+                   Integer dorsal,
+                   String fechaNacimiento,
+                   Integer CampeonadotsMundiales,
+                   String primeraVictoria,
+                   Integer Puntos) {
+        this.codigoPiloto = new SimpleIntegerProperty(codigoPiloto);
+        this.Nombre = new SimpleStringProperty(Nombre);
+        this.Apellidos = new SimpleStringProperty(Apellidos);
+        this.Nacionalidad = new SimpleStringProperty(Nacionalidad);
+        this.CodigoEscuderiaPiloto = new SimpleIntegerProperty(CodigoEscuderiaPiloto);
+        this.Estatura = new SimpleDoubleProperty(Estatura);
+        this.Peso = new SimpleFloatProperty(Peso);
+        this.dorsal = new SimpleIntegerProperty(dorsal);
+        this.fechaNacimiento = new SimpleStringProperty(fechaNacimiento);
+        this.CampeonatosMundiales = new SimpleIntegerProperty(CampeonadotsMundiales);
+        this.primeraVictoria = new SimpleStringProperty(primeraVictoria);
+        this.Puntos = new SimpleIntegerProperty(Puntos);
     }
 
-    public Pilotos(int codigoPiloto, String nombre, String apellidos, String nacionalidad, int codigoEscuderiaPiloto, BigDecimal estatura, float peso, int dorsal, Date fechaNacimiento, int campeonatosMundiales, String primeraVictoria, int puntos) {
-    }
 
     public int getCodigoPiloto() {
         return codigoPiloto.get();
@@ -114,12 +122,16 @@ public class Pilotos {
         this.CodigoEscuderiaPiloto.set(codigoEscuderiaPiloto);
     }
 
-    public DecimalFormat getEstatura() {
+    public double getEstatura() {
+        return Estatura.get();
+    }
+
+    public DoubleProperty estaturaProperty() {
         return Estatura;
     }
 
-    public void setEstatura(DecimalFormat estatura) {
-        Estatura = estatura;
+    public void setEstatura(double estatura) {
+        this.Estatura.set(estatura);
     }
 
     public float getPeso() {
@@ -146,12 +158,16 @@ public class Pilotos {
         this.dorsal.set(dorsal);
     }
 
-    public DateFormat getFechaNacimiento() {
+    public String getFechaNacimiento() {
+        return fechaNacimiento.get();
+    }
+
+    public StringProperty fechaNacimientoProperty() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(DateFormat fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento.set(fechaNacimiento);
     }
 
     public int getCampeonatosMundiales() {

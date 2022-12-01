@@ -41,16 +41,43 @@ public class HelloController {
     private Button nuevaEscuderia;
     @FXML
     private TextField tfCodigoEscuderia_Borrar;
-
+    @FXML
+    private int codEscuderia;
 
     public void initialize(){
 
         cargarAuto();
+        cargarGestorDobleCLick();
+    }
 
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+//************************************************Gestor dobleclik************************************************//
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+    private void cargarGestorDobleCLick () {
+        if(tableViewEscuderia == null){
+
+        }else{
+            tableViewEscuderia.setRowFactory(tv -> {
+                TableRow<Escuderias> row = new TableRow<>();
+                row.setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                        codEscuderia = row.getItem().getCodigoEscuderia();
+                        tfCodigoEscuderia_Borrar.setText(String.valueOf(codEscuderia));
+                    }
+                });
+                return row;
+            });
+        }
 
     }
 
-
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+//************************************************Cargar atuomatico************************************************//
+//***************************************************************************************************************//
+//***************************************************************************************************************//
     public boolean cargarAuto() {
         ObservableList<Object> data = null;
         try {
@@ -116,7 +143,7 @@ public class HelloController {
         return false;
     }
 
-    //***************************************************************************************************************//
+//***************************************************************************************************************//
 //***************************************************************************************************************//
 //************************************************CARGAR**********************************************************//
 //***************************************************************************************************************//
@@ -209,15 +236,15 @@ public class HelloController {
 
                 try {
                     // Nos conectamos
-                    final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
-                    final String usuario = "adminer";
+                    final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
+                    final String usuario = "root";
                     final String passwd = "adminer";
 
                     Connection conexionBBDD;
                     conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
-                    String SQLBORRAR = "DELETE FROM offices "
-                            + " WHERE officeCode = ? ";
+                    String SQLBORRAR = "DELETE FROM escuderia "
+                            + " WHERE CodigoEscuderia = ? ";
                     PreparedStatement st = conexionBBDD.prepareStatement(SQLBORRAR);
 
                     st.setString(1, tfCodigoEscuderia_Borrar.getText());
@@ -257,11 +284,12 @@ public class HelloController {
 //***************************************************************************************************************//
 //***************************************************************************************************************//
     @FXML
-    public void nuevaEscuderia(Event event) {
+    public void nuevaEscuderia(ActionEvent event) {
         try {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("nuevaEscuderia.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            Scene scene = new Scene(fxmlLoader.load(), 720, 480);
+            stage.setTitle("Añadir nueva escuderia");
             stage.setScene(scene);
             stage.show();
 
@@ -271,17 +299,31 @@ public class HelloController {
             throw new RuntimeException(e);
         }
     }
+
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+//************************************************Nueva Piloto************************************************//
+//***************************************************************************************************************//
+//***************************************************************************************************************//
     public void nuevoPiloto(Event event) {
         try {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("nuevoPiloto.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setTitle("Añadir nuevo piloto");
             stage.setScene(scene);
-            stage.show();
+            NuevoPiloto_Controller controller = fxmlLoader.getController();
+            controller.init(stage,codEscuderia);
+            stage.showAndWait();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+//***************************************************************************************************************//
+//***************************************************************************************************************//
+//************************************************Nueva Circuito************************************************//
+//***************************************************************************************************************//
+//***************************************************************************************************************//
     public void circuitos(Event event) {
         Circuitos circuitos = new Circuitos();
         Stage stage = new Stage();
@@ -291,5 +333,4 @@ public class HelloController {
             throw new RuntimeException(e);
         }
     }
-
 }
