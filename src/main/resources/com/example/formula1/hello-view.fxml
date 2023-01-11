@@ -62,7 +62,7 @@
          <font>
             <Font size="20.0" />
          </font></Button>
-      <Button fx:id="nuevaEscuderia" mnemonicParsing="false" onAction="#nuevaEscuderia" text="Añadir nueva escuderia  " GridPane.rowIndex="2">
+      <Button id="nuevaEscuderiaTest" fx:id="nuevaEscuderia" mnemonicParsing="false" onAction="#nuevaEscuderia" text="Añadir nueva escuderia  " GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>
