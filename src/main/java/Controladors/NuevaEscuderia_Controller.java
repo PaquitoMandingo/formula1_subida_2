@@ -78,6 +78,7 @@ public class NuevaEscuderia_Controller
     public void guardar(ActionEvent actionEvent) {
         Alert alert;
 
+
         if (!btnAnadirEscuderia.getText().trim().equals("")) {
 
             alert = new Alert(Alert.AlertType.CONFIRMATION, "Se ha añadido correctamente'");

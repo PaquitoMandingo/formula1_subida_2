@@ -49,7 +49,7 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfNombreEscuderia" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="3">
+      <TextField id="tfNombreEscuderia" fx:id="tfNombreEscuderia" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
@@ -59,7 +59,7 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfAnioCreacion" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <TextField id="tfAnioCreacion" fx:id="tfAnioCreacion" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
@@ -69,7 +69,7 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfMundiales" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="4">
+      <TextField id="tfMundiales" fx:id="tfMundiales" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
@@ -79,7 +79,7 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfPatrocinadores" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <TextField id="tfPatrocinadores" fx:id="tfPatrocinadores" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
@@ -89,7 +89,7 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfWeb" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="5">
+      <TextField id="tfWeb" fx:id="tfWeb" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="4" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
@@ -99,7 +99,7 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField fx:id="tfPuntosMundialesEquipos" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <TextField id="tfPuntosMundial" fx:id="tfPuntosMundialesEquipos" minHeight="-Infinity" minWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
@@ -132,11 +132,11 @@
             <Insets left="20.0" />
          </GridPane.margin>
       </Text>
-      <Button fx:id="btnAnadirEscuderia" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#guardar" text="Añadir " GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <Button id="bAnadir" fx:id="btnAnadirEscuderia" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#guardar" text="Añadir " GridPane.columnIndex="1" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin></Button>
-      <Button fx:id="btnVolver" mnemonicParsing="false" onAction="#volver" text="" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
+      <Button id="btnVolver" fx:id="btnVolver" mnemonicParsing="false" onAction="#volver" text="" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="1">
          <font>
             <Font size="24.0" />
          </font></Button>
