@@ -50,7 +50,6 @@ class HelloControllerTestUnitario {
     @Start
     public void start(Stage stage) throws IOException {
         System.out.println(getClass());
-
         mainroot =  FXMLLoader.load(HelloApplication.class.getResource("hello-view.fxml"));
         mainstage = stage;
         stage.setTitle("Hello!");
@@ -82,7 +81,7 @@ class HelloControllerTestUnitario {
         try {
             st = conexionBBDD.prepareStatement(SQLINSERT);
 
-        st.setInt(1, Integer.parseInt(tfAnadirCodigoEscuderia.getText()));
+        st.setInt(1, Integer.parseInt("76761"));
         st.setString(2, tfNombreEscuderia.getText());
         st.setInt(3, Integer.parseInt(tfAnioCreacion.getText()));
         st.setString(4, tfMundiales.getText());

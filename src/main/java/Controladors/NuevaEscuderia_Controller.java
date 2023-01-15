@@ -79,7 +79,7 @@ public class NuevaEscuderia_Controller
         Alert alert;
 
 
-        if (!btnAnadirEscuderia.getText().trim().equals("")) {
+        if (!tfAnadirCodigoEscuderia.getText().trim().equals("")&& !btnAnadirEscuderia.getText().isBlank()) {
 
             alert = new Alert(Alert.AlertType.CONFIRMATION, "Se ha añadido correctamente'");
 
@@ -125,6 +125,8 @@ public class NuevaEscuderia_Controller
                     System.out.println("Error:" + e.toString());
                 }
             }
+        }else{
+            alert = new Alert(Alert.AlertType.CONFIRMATION, "No se han introducido los datos correcdtamente'");
         }
     }
 
