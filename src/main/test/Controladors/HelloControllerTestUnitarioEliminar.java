@@ -1,5 +1,6 @@
 package Controladors;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -29,8 +30,8 @@ public class HelloControllerTestUnitarioEliminar {
         try {
 
             con = DriverManager.getConnection(servidor, usuario, passwd);
-            String SQL = "DELETE FROM criptomoneda "
-                    + " WHERE Token = 'UNI' ";
+            String SQL = "DELETE FROM escuderias "
+                    + " WHERE codigoEscuderia = '71710' ";
 
             PreparedStatement st = con.prepareStatement(SQL);
 
@@ -49,7 +50,7 @@ public class HelloControllerTestUnitarioEliminar {
     void registroComprobar() {
         Criptomoneda c = new Criptomoneda();
         this.datosResultadoConsulta = FXCollections.observableArrayList();
-        final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
+        final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
         final String usuario = "root";
         final String passwd = "adminer";
         int registrosAfectadosConsulta = 0;
@@ -60,8 +61,8 @@ public class HelloControllerTestUnitarioEliminar {
             con = DriverManager.getConnection(servidor, usuario, passwd);
 
             String SQL = "SELECT * "
-                    + "FROM criptomoneda "
-                    + "WHERE Token ='UNI'";
+                    + "FROM escuderia "
+                    + "WHERE codigoEscueria ='71710'";
 
 
             ResultSet resultadoConsulta = con.createStatement().executeQuery(SQL);
@@ -69,7 +70,7 @@ public class HelloControllerTestUnitarioEliminar {
 
             while (resultadoConsulta.next()) {
 
-                c = new Criptomoneda(
+                c = new datos(
                         resultadoConsulta.getString("token"),
                         resultadoConsulta.getString("nombre"),
                         resultadoConsulta.getString("descripcion"),
@@ -81,6 +82,15 @@ public class HelloControllerTestUnitarioEliminar {
                         resultadoConsulta.getString("contrato"),
                         resultadoConsulta.getString("paginaWeb"),
                         resultadoConsulta.getFloat("cantidadComprada")
+                        datos.getInt("CodigoEscuderia"),
+                        datos.getString("Nombre"),
+                        datos.getInt("AnioCreacion"),
+                        datos.getString("MundialesGanados"),
+                        datos.getString("Patrocinador"),
+                        datos.getString("Web"),
+                        datos.getInt("puntosE"),
+                        datos.getInt("CodigoPiloto1"),
+                        datos.getInt("CodigoPiloto2"));
                 );
 
                 datosResultadoConsulta.add(c);

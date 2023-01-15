@@ -1,7 +1,9 @@
 package Controladors;
 
+import com.example.formula1.Escuderias;
 import com.example.formula1.HelloApplication;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,6 +26,7 @@ class HelloControllerTestUnitario {
     Stage mainstage;
 
 
+    ObservableList<Escuderias> resultadoConsulta = FXCollections.observableArrayList();
 
     @Test
     void registroUnitario() throws SQLException {
@@ -72,10 +75,11 @@ class HelloControllerTestUnitario {
             throw new RuntimeException(e);
         }
     }
+
     @Test
     void registroComprobar() {
-        Criptomoneda c = new Criptomoneda();
-        this.datosResultadoConsulta = FXCollections.observableArrayList();
+
+        this.resultadoConsulta = FXCollections.observableArrayList();
         final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
         final String usuario = "root";
         final String passwd = "adminer";
@@ -91,40 +95,41 @@ class HelloControllerTestUnitario {
                     + "WHERE codigoEscuderia ='71710'";
 
 
-            ResultSet resultadoConsulta = con.createStatement().executeQuery(SQL);
+            ResultSet datos = con.createStatement().executeQuery(SQL);
             PreparedStatement st = con.prepareStatement(SQL);
 
-            while (resultadoConsulta.next()) {
+            while (datos.next()) {
 
-                c = new Criptomoneda(
-                        resultadoConsulta.getString("token"),
-                        resultadoConsulta.getString("nombre"),
-                        resultadoConsulta.getString("descripcion"),
-                        resultadoConsulta.getInt("puesto"),
-                        resultadoConsulta.getDate("fechaSalida"),
-                        resultadoConsulta.getFloat("precioPromedio"),
-                        resultadoConsulta.getFloat("circulatingSupply"),
-                        resultadoConsulta.getFloat("totalSupply"),
-                        resultadoConsulta.getString("contrato"),
-                        resultadoConsulta.getString("paginaWeb"),
-                        resultadoConsulta.getFloat("cantidadComprada")
-                );
+                Escuderias e = new Escuderias(
 
-                datosResultadoConsulta.add(c);
+                        datos.getInt("CodigoEscuderia"),
+                        datos.getString("Nombre"),
+                        datos.getInt("AnioCreacion"),
+                        datos.getString("MundialesGanados"),
+                        datos.getString("Patrocinador"),
+                        datos.getString("Web"),
+                        datos.getInt("puntosE"),
+                        datos.getInt("CodigoPiloto1"),
+                        datos.getInt("CodigoPiloto2"));
+                ////!!!
+                ;
+                ////!!!  //);//
+                resultadoConsulta.add(e);
                 registrosAfectadosConsulta++;
-                System.out.println(c.toString());
+                System.out.println(e.toString());
 
             }
             ResultSet resultadoConsulta2 = con.createStatement().executeQuery(SQL);
-            if(resultadoConsulta2.next()){
-                System.out.println("Registros afectados "+registrosAfectadosConsulta);
+            if (resultadoConsulta2.next()) {
+                System.out.println("Registros afectados " + registrosAfectadosConsulta);
 
-            }else {
-                assert false:"No tiene datos";
+            } else {
+                assert false : "No tiene datos";
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("No existen datos");
         }
 
     }
+}
