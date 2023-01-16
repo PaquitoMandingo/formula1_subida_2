@@ -30,6 +30,7 @@ class HelloControllerTestUnitario {
 
     @Test
     void registroUnitario() throws SQLException {
+        Escuderias ed = new Escuderias();
         final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
         final String usuario = "root";
         final String passwd = "adminer";
@@ -40,38 +41,31 @@ class HelloControllerTestUnitario {
                 + " CodigoEscuderia ,"
                 + " Nombre ,"
                 + " AnioCreacion ,"
-                + " Puesto, "
-                + " FechaSalida ,"
-                + " PrecioPromedio ,"
-                + " CirculatingSupply ,"
-                + " TotalSupply ,"
-                + " Contrato ,"
-                + " PaginaWeb ,"
-                + " CantidadComprada )"
-                + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + " MundialesGanados, "
+                + " Patrocinador ,"
+                + " Web ,"
+                + " PuntosE )"
+                + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 
         PreparedStatement st = null;
         try {
             st = conexionBBDD.prepareStatement(SQLINSERT);
 
-            st.setString(1, "71710");
-            st.setString(2, "TestUnitario");
-            st.setString(3, "Test unitario e");
-            st.setInt(4, Integer.parseInt("22"));
-            st.setDate(5, Date.valueOf("2020-01-01"));
-            st.setFloat(6, Float.parseFloat("2.0"));
-            st.setFloat(7, Float.parseFloat("2.0"));
-            st.setFloat(8, Float.parseFloat("2.0"));
-            st.setString(9, "TestUnitario");
-            st.setString(10, "Test unitario e");
-            st.setFloat(11, Float.parseFloat("2.0"));
+            st.setInt(1, 71710);
+            st.setString(2, "TestEscuderia");
+            st.setInt(3, 1212);
+            st.setString(4, "2014");
+            st.setString(5, "11-12-2010");
+            st.setString(6, "webEjemploTest.com");
+            st.setInt(7, 221);
+
 
 
             st.executeUpdate();
             st.close();
             conexionBBDD.close();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

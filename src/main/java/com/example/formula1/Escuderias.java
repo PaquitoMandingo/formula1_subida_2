@@ -29,6 +29,10 @@ public class Escuderias {
         this.codigoPiloto2 = new SimpleIntegerProperty(codigoPiloto2);
     }
 
+    public Escuderias() {
+
+    }
+
     public int getCodigoEscuderia() {
         return codigoEscuderia.get();
     }

@@ -1,6 +1,8 @@
 package Controladors;
 
+import com.example.formula1.Escuderias;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -18,10 +20,12 @@ import java.io.IOException;
 import java.sql.*;
 
 public class HelloControllerTestUnitarioEliminar {
+    ObservableList<Escuderias> resultadoConsulta = FXCollections.observableArrayList();
+
     @Test()
     void registroUnitarioEliminar() throws SQLException {
 
-        final String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
+        final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
         final String usuario = "root";
         final String passwd = "adminer";
         int registrosAfectadosConsulta = 0;
@@ -30,8 +34,8 @@ public class HelloControllerTestUnitarioEliminar {
         try {
 
             con = DriverManager.getConnection(servidor, usuario, passwd);
-            String SQL = "DELETE FROM escuderias "
-                    + " WHERE codigoEscuderia = '71710' ";
+            String SQL = "DELETE FROM escuderia "
+                    + " WHERE CodigoEscuderia = '71710' ";
 
             PreparedStatement st = con.prepareStatement(SQL);
 
@@ -48,8 +52,7 @@ public class HelloControllerTestUnitarioEliminar {
 
     @Test
     void registroComprobar() {
-        Criptomoneda c = new Criptomoneda();
-        this.datosResultadoConsulta = FXCollections.observableArrayList();
+        this.resultadoConsulta = FXCollections.observableArrayList();
         final String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
         final String usuario = "root";
         final String passwd = "adminer";
@@ -62,26 +65,15 @@ public class HelloControllerTestUnitarioEliminar {
 
             String SQL = "SELECT * "
                     + "FROM escuderia "
-                    + "WHERE codigoEscueria ='71710'";
+                    + "WHERE CodigoEscuderia ='71710'";
 
-
-            ResultSet resultadoConsulta = con.createStatement().executeQuery(SQL);
+            ResultSet datos = con.createStatement().executeQuery(SQL);
             PreparedStatement st = con.prepareStatement(SQL);
 
-            while (resultadoConsulta.next()) {
+            while (datos.next()) {
 
-                c = new datos(
-                        resultadoConsulta.getString("token"),
-                        resultadoConsulta.getString("nombre"),
-                        resultadoConsulta.getString("descripcion"),
-                        resultadoConsulta.getInt("puesto"),
-                        resultadoConsulta.getDate("fechaSalida"),
-                        resultadoConsulta.getFloat("precioPromedio"),
-                        resultadoConsulta.getFloat("circulatingSupply"),
-                        resultadoConsulta.getFloat("totalSupply"),
-                        resultadoConsulta.getString("contrato"),
-                        resultadoConsulta.getString("paginaWeb"),
-                        resultadoConsulta.getFloat("cantidadComprada")
+                Escuderias e = new Escuderias(
+
                         datos.getInt("CodigoEscuderia"),
                         datos.getString("Nombre"),
                         datos.getInt("AnioCreacion"),
@@ -91,24 +83,25 @@ public class HelloControllerTestUnitarioEliminar {
                         datos.getInt("puntosE"),
                         datos.getInt("CodigoPiloto1"),
                         datos.getInt("CodigoPiloto2"));
-                );
 
-                datosResultadoConsulta.add(c);
+
+                resultadoConsulta.add(e);
                 registrosAfectadosConsulta++;
-                System.out.println(c.toString());
+                System.out.println(e.toString());
 
             }
 
-            if(registrosAfectadosConsulta != 0){
-                assert false:"El campo sigue existiendo";
+            if (registrosAfectadosConsulta != 0) {
+                assert false : "El campo sigue existiendo";
 
-            }else {
+            } else {
 
                 System.out.println("Se ha eliminado correctamente");
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("No existen datos");
         }
 
     }
+}
