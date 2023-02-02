@@ -45,7 +45,6 @@ public class HelloController {
     private int codEscuderia;
 
     public void initialize(){
-
         cargarAuto();
         cargarGestorDobleCLick();
     }
@@ -334,4 +333,19 @@ public class HelloController {
             throw new RuntimeException(e);
         }
     }
+
+    public void reportes(Event event) {
+        try {
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("reportes.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setTitle("Reportes");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+
+
