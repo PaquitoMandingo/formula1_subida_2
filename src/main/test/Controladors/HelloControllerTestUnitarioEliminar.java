@@ -37,6 +37,8 @@ public class HelloControllerTestUnitarioEliminar {
             String SQL = "DELETE FROM escuderia "
                     + " WHERE CodigoEscuderia = '71710' ";
 
+
+
             PreparedStatement st = con.prepareStatement(SQL);
 
             st.executeUpdate();
@@ -88,7 +90,6 @@ public class HelloControllerTestUnitarioEliminar {
                 resultadoConsulta.add(e);
                 registrosAfectadosConsulta++;
                 System.out.println(e.toString());
-
             }
 
             if (registrosAfectadosConsulta != 0) {
@@ -104,6 +105,5 @@ public class HelloControllerTestUnitarioEliminar {
         } catch (SQLException e) {
             System.out.println("No existen datos");
         }
-
     }
 }
