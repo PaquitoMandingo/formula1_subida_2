@@ -24,7 +24,7 @@ public class ReportFormula1 extends JFrame {
 
     public void showReportSimple() throws JRException, ClassNotFoundException, SQLException {
 
-        String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
+        String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
         String usuario = "root";
         String passwd = "adminer";
 
@@ -33,7 +33,7 @@ public class ReportFormula1 extends JFrame {
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
         //  Block of code to try
-        String reportSrcFile = "src/main/java/reportes/SubReport.jrxml";
+        String reportSrcFile = "src/main/java/reportes/ReporteSimple.jrxml";
 
         // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
@@ -56,8 +56,8 @@ public class ReportFormula1 extends JFrame {
 
     public void showReportConSubreport() throws JRException, ClassNotFoundException, SQLException {
 
-        String servidor = "jdbc:mariadb://localhost:5555/noinch?useSSL=false";
-        String usuario = "adminer";
+        String servidor = "jdbc:mariadb://localhost:5555/formula1?useSSL=false";
+        String usuario = "root";
         String passwd = "adminer";
 
         Connection conexionBBDD;
@@ -65,12 +65,12 @@ public class ReportFormula1 extends JFrame {
         conexionBBDD = DriverManager.getConnection(servidor, usuario, passwd);
 
         //  Block of code to try
-        String reportSrcFile = "src/main/java/com/example/javafxjasperreport/MaestroClientes.jrxml";
-        String subReportSrcFile = "src/main/java/com/example/javafxjasperreport/SubreportPedidos.jrxml";
+        String reportSrcFile = "src/main/java/reportes/ReporteMaestro.jrxml";
+
 
         // First, compile jrxml file.
         JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
-        JasperReport jasperSubReport = JasperCompileManager.compileReport(subReportSrcFile);
+
 
 
         // Debemos pasar el subreport como un parámetro para que se muestre correctamente el informe
@@ -78,7 +78,6 @@ public class ReportFormula1 extends JFrame {
 
         HashMap<String, Object> parameters = new HashMap<String, Object>();
 
-        parameters.put("Subreport", jasperSubReport);
 
         JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conexionBBDD);
         JRViewer viewer = new JRViewer(print);

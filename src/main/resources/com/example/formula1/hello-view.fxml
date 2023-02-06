@@ -109,7 +109,7 @@
             <Insets bottom="40.0" left="20.0" />
          </GridPane.margin>
       </Text>
-      <Button id="btnreportes" onAction="#reportes" mnemonicParsing="false" text="Reportes" textAlignment="CENTER" GridPane.rowIndex="6">
+      <Button id="btnreportes" mnemonicParsing="false" onAction="#reportes" text="Reportes" textAlignment="CENTER" GridPane.rowIndex="6">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

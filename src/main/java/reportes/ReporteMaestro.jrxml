@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lumbago" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[Zm9ybXVsYTEuZXNjdWRlcmlhIEFTICwxMzIsOTksYjZiZWZiYmUtMTk4MC00ODZlLWEwNzMtMjIy
+MjlmZTllNDU2Ow==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MariaDB"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT `CodigoEscuderia`,
+	`Nombre`
+FROM formula1.escuderia]]>
+	</queryString>
+	<field name="CodigoEscuderia" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="CodigoEscuderia"/>
+		<property name="com.jaspersoft.studio.field.label" value="CodigoEscuderia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="escuderia"/>
+	</field>
+	<field name="Nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="escuderia"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="552" height="95" backcolor="#C8DBDE" uuid="6c6ca4e1-17cd-4913-93d6-5e670ea9ae8a"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</box>
+				<staticText>
+					<reportElement style="Title" x="10" y="10" width="418" height="56" forecolor="#030303" uuid="a2a2cac8-5a7d-4487-8c54-dab235ce4e21"/>
+					<textElement>
+						<font size="40" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Escuderias y sus pilotos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" uuid="8978eac3-c578-41c9-837e-48d2b0184642"/>
+					<textElement>
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="95" width="552" height="36" forecolor="#000000" backcolor="#59888F" uuid="e3c14156-5b51-4201-918b-97fdc012e5d4"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</box>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="413" y="10" width="132" height="20" forecolor="#FFFFFF" uuid="5c3301e7-a737-4c59-8a2f-a6c79fd1adb8"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="-1" width="276" height="32" backcolor="#C8DBDE" uuid="262474f7-786b-4186-a063-08408d6a2ed4"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</box>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="276" y="-1" width="276" height="32" backcolor="#BABABA" uuid="ff2de367-a31c-4486-b835-93466421583d"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</box>
+			</frame>
+			<staticText>
+				<reportElement style="Column header" x="0" y="7" width="277" height="18" forecolor="#000000" uuid="e2be20c7-b95e-4ec3-a327-3e4fb8796e29">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e057b6df-91fe-4b01-8714-2b9c5e1368b7"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CodigoEscuderia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="277" y="7" width="277" height="18" forecolor="#000000" uuid="9f4a231e-60be-470f-9430-e7a1618ce9da">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fb2deb60-6deb-4189-880f-fc29eee4ff71"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre de la escuderia]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="b50221b5-8254-440b-8c6f-1f0b138c9259"/>
+			</frame>
+			<subreport>
+				<reportElement x="2" y="27" width="549" height="4" uuid="f8dd1c6d-7319-4735-a34c-f4153b483b81"/>
+				<subreportParameter name="Parameter1">
+					<subreportParameterExpression><![CDATA[$F{CodigoEscuderia}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["src/main/java/reportes/Subreporte.jasper"]]></subreportExpression>
+			</subreport>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="-5" width="276" height="32" backcolor="#C8DBDE" uuid="45f14f99-ab7e-4be4-86d4-c945b2ada399"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</box>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" positionType="Float" x="10" y="6" width="260" height="18" uuid="9e6c1b66-81ff-41d8-a829-6297ba1ea368">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e057b6df-91fe-4b01-8714-2b9c5e1368b7"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CodigoEscuderia}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="276" y="-5" width="276" height="32" backcolor="#BABABA" uuid="a4df4f16-bd9d-4697-a897-26e6be227600"/>
+				<box>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</box>
+				<textField textAdjust="StretchHeight">
+					<reportElement style="Detail" positionType="Float" x="10" y="6" width="258" height="18" uuid="7ff2b96d-85d1-4e9f-8aba-daee47f807c7">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fb2deb60-6deb-4189-880f-fc29eee4ff71"/>
+					</reportElement>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#C2C2C2" uuid="729c3539-f946-4d0e-a0a7-bda2815ea1b0"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="4834e99c-7f6c-485a-b098-50e5187f2ab4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="9825b46e-76f1-469a-abb8-a1cc27aad685"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="137d38c7-1a83-4fc5-b156-9d5f1b1a0ddc"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

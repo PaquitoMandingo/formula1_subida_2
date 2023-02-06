@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" fx:controller="reportes.ReportController" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<GridPane maxHeight="-Infinity" fx:controller="reportes.ReportController" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" >
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -17,7 +17,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button onAction="#onImprimirListadoClick" mnemonicParsing="false" text="Button" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-      <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <Button onAction="#onImprimirListadoClick" mnemonicParsing="false" text="Reporte" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+      <Button onAction="#onImprimirListadoPedidosCliClick" mnemonicParsing="false" text="Subreporte" GridPane.columnIndex="2" GridPane.rowIndex="1" />
    </children>
 </GridPane>
