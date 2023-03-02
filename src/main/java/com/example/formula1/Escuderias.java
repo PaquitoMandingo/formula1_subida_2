@@ -4,7 +4,13 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
+/**La clase Escuderias representa una escudería de Fórmula 1. La clase tiene varias propiedades como códigoEscuderia,
+nombre, anioCreacion, mundialesGanados, patrocinador, web, puntosE, codigoPiloto1 y codigoPiloto2.
+La clase tiene dos constructores, uno que recibe todas las propiedades como parámetros y otro constructor vacío.
+La clase tiene varios métodos para acceder a las propiedades, como getCodigoEscuderia, setCodigoEscuderia, getNombre,
+setNombre, getAnioCreacion, setAnioCreacion, getMundialesGanados, setMundialesGanados, getPatrocinador, setPatrocinador,
+getWeb, setWeb, getPuntosE, setPuntosE, getCodigoPiloto1, setCodigoPiloto1, getCodigoPiloto2 y setCodigoPiloto2.
+La clase también tiene un método toString para devolver una representación en cadena de la escudería*/
 public class Escuderias {
 
     private IntegerProperty codigoEscuderia;
@@ -32,115 +38,87 @@ public class Escuderias {
     public Escuderias() {
 
     }
-
     public int getCodigoEscuderia() {
         return codigoEscuderia.get();
     }
-
     public IntegerProperty codigoEscuderiaProperty() {
         return codigoEscuderia;
     }
-
     public void setCodigoEscuderia(int codigoEscuderia) {
         this.codigoEscuderia.set(codigoEscuderia);
     }
-
     public String getNombre() {
         return nombre.get();
     }
-
     public StringProperty nombreProperty() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre.set(nombre);
     }
-
     public int getAnioCreacion() {
         return anioCreacion.get();
     }
-
     public IntegerProperty anioCreacionProperty() {
         return anioCreacion;
     }
-
     public void setAnioCreacion(int anioCreacion) {
         this.anioCreacion.set(anioCreacion);
     }
-
     public String getMundialesGanados() {
         return mundialesGanados.get();
     }
-
     public StringProperty mundialesGanadosProperty() {
         return mundialesGanados;
     }
-
     public void setMundialesGanados(String mundialesGanados) {
         this.mundialesGanados.set(mundialesGanados);
     }
-
     public String getPatrocinador() {
         return patrocinador.get();
     }
-
     public StringProperty patrocinadorProperty() {
         return patrocinador;
     }
-
     public void setPatrocinador(String patrocinador) {
         this.patrocinador.set(patrocinador);
     }
-
     public String getWeb() {
         return web.get();
     }
-
     public StringProperty webProperty() {
         return web;
     }
-
     public void setWeb(String web) {
         this.web.set(web);
     }
-
     public int getPuntosE() {
         return puntosE.get();
     }
-
     public IntegerProperty puntosEProperty() {
         return puntosE;
     }
-
     public void setPuntosE(int puntosE) {
         this.puntosE.set(puntosE);
     }
-
     public int getCodigoPiloto1() {
         return codigoPiloto1.get();
     }
-
     public IntegerProperty codigoPiloto1Property() {
         return codigoPiloto1;
     }
-
     public void setCodigoPiloto1(int codigoPiloto1) {
         this.codigoPiloto1.set(codigoPiloto1);
     }
-
     public int getCodigoPiloto2() {
         return codigoPiloto2.get();
     }
-
     public IntegerProperty codigoPiloto2Property() {
         return codigoPiloto2;
     }
-
     public void setCodigoPiloto2(int codigoPiloto2) {
         this.codigoPiloto2.set(codigoPiloto2);
     }
-
     @Override
     public String toString() {
         return "Escuderias{" +

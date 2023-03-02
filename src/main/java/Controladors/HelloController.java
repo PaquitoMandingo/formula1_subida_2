@@ -54,6 +54,13 @@ public class HelloController {
 //************************************************Gestor dobleclik************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
+    /**
+
+     Configura la funcionalidad de doble clic en una fila de la tabla de escuderías.
+     Si la tabla es nula, no se realiza ninguna acción.
+     Al hacer doble clic en una fila, se obtiene el código de la escudería de la fila seleccionada
+     y se muestra en el campo de texto correspondiente para borrar la escudería.
+     */
     private void cargarGestorDobleCLick () {
         if(tableViewEscuderia == null){
 
@@ -77,6 +84,10 @@ public class HelloController {
 //************************************************Cargar atuomatico************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
+    /**
+     Carga los datos de las escuderías desde la base de datos y los muestra en una tabla.
+     @return devuelve false siempre.
+     */
     public boolean cargarAuto() {
         ObservableList<Object> data = null;
         try {
@@ -147,6 +158,13 @@ public class HelloController {
 //************************************************CARGAR**********************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
+
+    /**
+
+    Método que carga los datos de la base de datos y los muestra en una tabla.
+    @param actionEvent evento de acción que activa el método.
+            @return false siempre, ya que no se usa para nada más.
+            */
     public boolean cargar(ActionEvent actionEvent) {
         ObservableList<Object> data = null;
         try {
@@ -218,7 +236,12 @@ public class HelloController {
 //************************************************Borrar con advertencia*****************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
-
+    /**
+     Método que maneja el evento del botón "Seguro" para borrar una escudería de la base de datos.
+     Este método está marcado como @Deprecated, lo que significa que se considera obsoleto y se recomienda
+     no usarlo en nuevos desarrollos. En su lugar, se debería usar un método que utilice un patrón de diseño
+     MVC (Modelo-Vista-Controlador) para separar la lógica de negocio de la interfaz de usuario.
+     @param actionEvent el evento generado por el botón "Seguro"*/
 
     @Deprecated
     public void btnSeguro(ActionEvent actionEvent) {
@@ -282,6 +305,10 @@ public class HelloController {
 //************************************************Nueva Escuderia************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
+    /**
+     Abre una ventana para añadir una nueva escudería.
+     @param event Evento que desencadena la acción de añadir una nueva escudería.
+     */
     @FXML
     public void nuevaEscuderia(ActionEvent event) {
         try {
@@ -304,6 +331,14 @@ public class HelloController {
 //************************************************Nueva Piloto************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
+    /**
+
+     Método que se ejecuta al pulsar el botón "Nuevo Piloto" y muestra la ventana para añadir un nuevo piloto.
+     Crea un nuevo objeto Stage y carga el archivo FXML correspondiente. También inicializa el controlador de la ventana
+     y le pasa los parámetros necesarios (el objeto Stage y el código de la escudería a la que pertenecerá el nuevo piloto).
+     Finalmente, muestra la ventana y espera a que el usuario termine de interactuar con ella.
+     @param event El evento que ha desencadenado la acción (pulsar el botón "Nuevo Piloto").
+     */
     public void nuevoPiloto(Event event) {
         try {
             Stage stage = new Stage();
@@ -324,26 +359,42 @@ public class HelloController {
 //************************************************Nueva Circuito************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
-    public void circuitos(Event event) {
-        Circuitos circuitos = new Circuitos();
-        Stage stage = new Stage();
-        try {
-            circuitos.start(stage);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    /**
 
-    public void reportes(Event event) {
-        try {
+     Controlador principal de la aplicación que maneja la navegación a través del menú.
+     */
+    public class Menu_Controller {
+
+        /**
+
+         Abre la ventana de circuitos al seleccionar la opción correspondiente en el menú.
+         @param event El evento de selección de la opción de circuitos en el menú.
+         */
+        public void circuitos(Event event) {
+            Circuitos circuitos = new Circuitos();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("reportes.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-            stage.setTitle("Reportes");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            try {
+                circuitos.start(stage);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        /**
+
+         Abre la ventana de reportes al seleccionar la opción correspondiente en el menú.
+         @param event El evento de selección de la opción de reportes en el menú.
+         */
+        public void reportes(Event event) {
+            try {
+                Stage stage = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("reportes.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+                stage.setTitle("Reportes");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

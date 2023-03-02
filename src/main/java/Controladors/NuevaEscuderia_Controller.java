@@ -18,7 +18,11 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-
+/**
+ * La clase contiene métodos para manejar eventos de la interfaz gráfica de usuario en JavaFX para agregar y guardar información de escuderías
+ * en una base de datos. El método initialize() está vacío, mientras que el método volver() maneja el evento de presionar el botón de "Volver" y
+ * carga la vista principal. El método guardar() maneja el evento de presionar el botón de "Guardar" y guarda la información de la escudería en la base de datos.
+ * */
 public class NuevaEscuderia_Controller
 {
 
@@ -44,11 +48,15 @@ public class NuevaEscuderia_Controller
     private Button btnAnadirEscuderia;
     @FXML
     private Button btnVolver;
-
+/**
+ * La función initialize es un método que se ejecuta automáticamente al cargar la vista correspondiente a este controlador.
+ * En este caso, el método está vacío, por lo que no realiza ninguna acción.*/
     @javafx.fxml.FXML
     public void initialize() {
 
     }
+    /**La función volver se ejecuta cuando se hace clic en el botón "Volver". Lo que hace es cargar la vista "hello-view.fxml"
+     * utilizando un FXMLLoader, crear una nueva escena y un nuevo Stage, mostrar el nuevo Stage y cerrar el Stage actual.*/
     public void volver(ActionEvent event){
 
         try {
@@ -73,7 +81,12 @@ public class NuevaEscuderia_Controller
 //****************************************Guardar datos**********************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
-
+/**
+ * La clase contiene también anotaciones de JavaFX, como @FXML en el método initialize()
+ * para indicar que el método será utilizado en el archivo FXML para cargar la vista,
+ * y también en el método guardar() para identificar los elementos de la interfaz que serán utilizados en el método.
+ * Además, la clase utiliza la clase Alert para mostrar mensajes de información y confirmación al usuario.
+ * */
     @FXML
     public void guardar(ActionEvent actionEvent) {
         Alert alert;

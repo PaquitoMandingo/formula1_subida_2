@@ -13,17 +13,17 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+/**Esta es una clase creada en tiempo de ejecucion qu es su principal caracteristica
+La clase Circuitos extiende de Application y contiene un método main que llama al método launch(args) de la clase Application.
+El método start(Stage stage) define la interfaz de usuario. Se crea una serie de etiquetas y se establecen sus propiedades de escala y relleno.
+Se crean dos cajas HBox y se establecen sus dimensiones y rellenos. Se crea un GridPane y se establece su margen y espaciado. Se añaden las cajas VBox al GridPane y
+se establece su relleno. Se añade el GridPane y la caja HBox a un AnchorPane, y se establece la escena. Se establece el título de la ventana, las dimensiones mínimas,
+la posibilidad de cambiar su tamaño y se muestra la ventana.*/
 public class Circuitos extends Application {
-
-
-
     public static void main(String[] args) {
         launch(args);
-
     }
     public void start(Stage stage) throws IOException {
-
         //Labels de titulo
         Label titulo = new Label("Circuitos disponibles en la temporada");
         Label codigoCircuito = new Label("Codigo de circuito: ");
@@ -35,7 +35,6 @@ public class Circuitos extends Application {
         Label recordVueltasSegundos = new Label("Record de vuelta (segundos): ");
         Label numeroDeVueltas = new Label("Numero de vueltas: ");
         Label paisProcedencia = new Label("Pais en el que se disputa: ");
-
 
         //Propiedades
         titulo.setScaleX(3);
@@ -58,10 +57,6 @@ public class Circuitos extends Application {
         numeroDeVueltas.setScaleY(2);
         paisProcedencia.setScaleX(2);
         paisProcedencia.setScaleY(2);
-
-
-
-
 
         //HBox 1 y 2
         HBox hbox = new HBox(titulo);
@@ -89,23 +84,17 @@ public class Circuitos extends Application {
         gridPane.add(vbox, 0 ,1);
         gridPane.add(vbox2, 1, 1);
 
-
-
         AnchorPane anchorPane = new AnchorPane(hbox, gridPane);
         Scene scene = new Scene(anchorPane, 1280,720);
-
 
         //Margenes
         titulo.setPadding(new Insets(10, 0, 0, 100));
 
-
         //Hoja de estilo
-
 
         //IDs
         hbox.setId("cabeceraHbox");
         titulo.setTextFill(Color.BLACK);
-
 
         // set the scene
         stage.setScene(scene);

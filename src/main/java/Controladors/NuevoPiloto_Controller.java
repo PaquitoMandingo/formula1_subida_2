@@ -8,15 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
-
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -77,7 +71,22 @@ public class NuevoPiloto_Controller {
     private int codigoEscuderia;
 
     private SimpleStringProperty escuderia, piloto, dorsal ,puntos;
-
+/**
+ * El método init se encarga de inicializar los atributos de la clase y de cargar los datos de los pilotos de una determinada escudería en la tabla de la interfaz gráfica.
+ * Parámetros:
+ * stage: el Stage de la aplicación.
+ * codigoEscuderia: el código de la escudería de la que se quieren cargar los pilotos.
+ * Atributos:
+ * escuderia: una SimpleStringProperty que se bindea con el campo de texto correspondiente en la interfaz gráfica.
+ * piloto: una SimpleStringProperty que se bindea con el campo de texto correspondiente en la interfaz gráfica.
+ * dorsal: una SimpleStringProperty que se bindea con el campo de texto correspondiente en la interfaz gráfica.
+ * puntos: una SimpleStringProperty que se bindea con el campo de texto correspondiente en la interfaz gráfica.
+ * stage: el Stage de la aplicación.
+ * codigoEscuderia: el código de la escudería de la que se quieren cargar los pilotos.
+ * Métodos:
+ * cargarAutoPilotos(): carga los datos de los pilotos de la escudería correspondiente en la tabla de la interfaz gráfica.
+ * cargarGestorDobleCLick(): configura el gestor del doble clic en la tabla de la interfaz gráfica.
+ * */
     public void init(Stage stage, int codigoEscuderia){
         escuderia = new SimpleStringProperty();
         piloto = new SimpleStringProperty();
@@ -97,6 +106,15 @@ public class NuevoPiloto_Controller {
 //************************************************Gestor dobleclik************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
+
+/**
+ * Este método carga los datos de la tabla "pilotos" de la base de datos "formula1" y los muestra en una tabla en la interfaz gráfica de usuario.
+ * Recibe como parámetros el objeto Stage de la aplicación y un código de escudería. Primero se establece una conexión con la base de datos y
+ * se realiza una consulta SQL para obtener los datos de los pilotos que pertenecen a la escudería especificada. Los resultados se guardan en un objeto ResultSet y
+ * se recorren para crear objetos de la clase Pilotos y agregarlos a una lista ObservableList. Luego, se establecen las propiedades de cada columna de la tabla y
+ * se asigna la lista ObservableList a la tabla para que se muestren los datos. Si se produce una excepción, se muestran los detalles del error en la consola y
+ * se limpia la tabla. El método devuelve false al finalizar su ejecución.
+ * */
     private void cargarGestorDobleCLick () {
         if(tableViewPilotos == null){
 
@@ -203,6 +221,12 @@ public class NuevoPiloto_Controller {
 //***********************************************Actualizar**********************************************************//
 //***************************************************************************************************************//
 //***************************************************************************************************************//
+    /**
+     Actualiza los datos de un piloto en la base de datos
+     @param event el evento que desencadena la actualización
+     @return verdadero si la actualización ha sido exitosa, falso en caso contrario
+     */
+
     public Boolean actualizar(ActionEvent event) {
         Connection c;
         int registrosAfectadosConsulta = 0;
